@@ -1,0 +1,171 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Saltur Blog Paneli | 2017 </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Türkçe Karakter sorunu Kodu -->
+    <meta http-equiv="Content-Type" content="text/html; charset=windows-1254" />
+    <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-9" />
+    <meta http-equiv="Content-Type" content="text/html; charset=x-mac-turkish" />
+    <!-- Türkçe Karakter sorunu Kodu -->
+    <!-- Bootstrap -->
+    <link rel="icon" href="@Url.Content("~/Content/img/favicon.png")" />
+    <link href="@Url.Content("~/Content/admin/vendors/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />    <!-- Font Awesome -->
+    <link href="@Url.Content("~/Content/admin/vendors/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+    <!-- iCheck -->
+    <!-- Custom Theme Style -->
+    <link href="@Url.Content("~/Content/admin/css/custom.css")" rel="stylesheet" />
+
+</head>
+
+<body class="nav-md">
+    <div class="container body">
+        <div class="main_container">
+            <div class="col-md-3 left_col">
+                <div class="left_col scroll-view">
+                    <div class="navbar nav_title" style="border: 0;">
+                        <a class="site_title"><i class="fa fa-user"></i> <span>Saltur Blog</span></a>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!-- menu profile quick info -->
+                    <div class="profile">
+                        <div class="profile_pic">
+                            <img src="@Session["UserImageUrl"].ToString()" alt="@Session["UserName"].ToString()" class="img-circle profile_img">
+                        </div>
+                        <div class="profile_info">
+                            <span>Hoş geldin,</span>
+                            @if (Session["UserName"] != null)
+                            {
+                                <h2>@Session["UserName"].ToString()</h2>
+                            }
+                        </div>
+                    </div>
+                    <!-- /menu profile quick info -->
+                    <br />
+                    <!-- sidebar menu -->
+                    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+                        <div class="menu_section">
+                           <br /><br /><br /><br /><br /><br />
+                            <div style="margin-left:20%"><h3>Menüler</h3></div>
+                            <ul class="nav side-menu">
+                                <li>
+                                    <a  href="@Url.Action("", "")" target="_blank"><i class="fa fa-home"></i> Siteyi Ön İzle <span class="fa fa-arrow-right"></span></a> 
+                                </li>
+                                <li>
+                                    <a><i class="fa fa-pencil"></i> Makale İşlemleri <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="@Url.Action("Index", "Article")">Makale Listesi</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Create","Article")">Makale Ekle</a>
+                                        </li>
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a><i class="fa fa-image"></i> Galeri İşlemleri <span class="fa fa-chevron-down"></span></a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="@Url.Action("Index","AdminGallery")">Galeri Listesi</a>
+                                        </li>
+                                        <li>
+                                            <a href="@Url.Action("Create","AdminGallery")">Galeri Resmi Ekle</a>
+                                        </li>
+
+                                    </ul>
+                                </li>
+
+                                <li>
+                                    <a>
+                                        <i class="fa fa-user-plus"></i> Yazar İşlemleri <span class="fa fa-chevron-down"></span>
+                                    </a>
+                                    <ul class="nav child_menu">
+                                        <li>
+                                            <a href="@Url.Action("Index","Adminler")">Yazarlar Listesi</a>
+                                        </li>
+                                        @if (Session["AdminRole"].ToString() == Constants.AdminRole.Admin)
+                                        {
+                                            <li>
+                                                <a href="@Url.Action("Create","Adminler")">Yazar Ekle</a>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Logout","Login")">
+                                        <i class="fa fa-sign-out"></i>
+                                        Güvenli Çıkış Yap
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /sidebar menu -->
+                    <!-- /menu footer buttons -->
+                    <div class="sidebar-footer hidden-small">
+                        <a data-toggle="tooltip" data-placement="top" title="Ayarlar">
+                            <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Tam Ekran">
+                            <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Kilitle">
+                            <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+                        </a>
+                        <a data-toggle="tooltip" data-placement="top" title="Çıkış Yap" href="@Url.Action("Logout","Login")">
+                            <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                    <!-- /menu footer buttons -->
+                </div>
+            </div>
+            <!-- top navigation -->
+            <div class="top_nav">
+
+                <div class="nav_menu">
+                    <nav class="" role="navigation">
+                        <div class="nav toggle">
+                            <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+                        </div>
+                    </nav>
+                </div>
+
+            </div>
+            <!-- /top navigation -->
+            <!-- page content -->
+            <div class="right_col" role="main">
+
+                @RenderBody()
+
+            </div>
+            <!-- /page content -->
+            <!-- footer content -->
+            <footer>
+                <div class="pull-right">
+                    Powered by <a href="http://salajans.com/" target="_blank">Salajans</a>
+                </div>
+                <div class="clearfix"></div>
+            </footer>
+            <!-- /footer content -->
+        </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="@Url.Content("~/Content/admin/vendors/jquery/dist/jquery.min.js")"></script>
+
+    <!-- Bootstrap -->
+
+    <script src="@Url.Content("~/Content/admin/vendors/bootstrap/dist/js/bootstrap.min.js")"></script>
+    <!-- Custom Theme Scripts -->
+
+    <script src="@Url.Content("~/Content/admin/js/custom.js")"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+﻿@if (ViewBag.Url == "yazarlar")
+{
+    <li class="active">
+        <a>YAZARLARIMIZ <i class="fa fa-caret-down"></i></a>
+        <ul>
+            @foreach (var item in @ViewBag.Authors)
+            {
+                <li><a href="/yazarlar/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(item.ArticleAuthor).ToLower()">@item.ArticleAuthor</a></li>
+            }
+        </ul>
+    </li>
+}
+else
+{
+    <li>
+        <a>YAZARLARIMIZ <i class="fa fa-caret-down"></i></a>
+        <ul>
+            @foreach (var item in @ViewBag.Authors)
+            {
+                <li><a href="/yazarlar/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(item.ArticleAuthor).ToLower()">@item.ArticleAuthor</a></li>
+            }
+        </ul>
+    </li>
+}

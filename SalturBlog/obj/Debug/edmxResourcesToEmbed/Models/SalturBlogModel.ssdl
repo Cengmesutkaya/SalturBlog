@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalturBlog2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ArticleContent" Type="nvarchar(max)" />
+    <Property Name="ArticleDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArticleTags" Type="nvarchar(max)" />
+    <Property Name="ArticleCatagory" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArticleAuthor" Type="nvarchar" MaxLength="50" />
+    <Property Name="ArticleStatus" Type="bit" />
+    <Property Name="ArticleReading" Type="int" />
+    <Property Name="ArticleTitle" Type="nvarchar" MaxLength="250" />
+    <Property Name="ArticleUrl" Type="nvarchar" MaxLength="150" />
+    <Property Name="HomeImageUrl" Type="nvarchar" MaxLength="250" />
+  </EntityType>
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="AuthorName" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuthorAbout" Type="nvarchar(max)" />
+    <Property Name="AuthorImageUrl" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuthorFacebook" Type="nvarchar" MaxLength="150" />
+    <Property Name="AuthorTwitter" Type="nvarchar" MaxLength="150" />
+    <Property Name="AuthorInstagram" Type="nvarchar" MaxLength="150" />
+    <Property Name="AuthorPassword" Type="nvarchar" MaxLength="50" />
+    <Property Name="AuthorEmail" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserRol" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="Gallery">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ImageUrl" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <EntityContainer Name="SalturBlog2017ModelStoreContainer">
+    <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

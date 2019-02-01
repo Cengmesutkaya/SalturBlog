@@ -1,0 +1,127 @@
+﻿@model IEnumerable<SalturBlog.Models.ArticleModel>
+@{  
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="page-header-area ptb-140">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="page-header-text text-center text-white">
+                    <h2 class="page-title">Seyahatnamem</h2>
+                    <ul class="breadcrumb">
+                        <li><a href="@Url.Action("","")">Anasayfa</a></li>
+                        <li class="active"><span><a></a>Seyahat</span></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- page-header-area-end -->
+<!-- post-content-area-start -->
+<div class="post-content-area ptb-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="post-blog-area lifestyle-area">
+                   
+                     <div class="allCatagory">
+                        @foreach (var item in Model)
+                        {
+                            <div class="article">
+                                <div class="single-post-item mb-50">
+                                    <div class="row">
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="single-post">
+                                                <div class="single-post-img">
+                                                    <img src="@item.HomeArticleImageUrl" alt="@item.ArticleAuthor" />
+                                                </div>
+                                                <div class="single-post-text">
+                                                    <a href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()/@item.ArticLinkUrl"><h3>@item.ArticleTitle</h3></a>
+                                                    <ul>
+                                                        <li><a><i class="fa fa-clock-o"></i> @item.ArticleDate</a></li>
+                                                        <li>
+                                                            <a href="/yazarlar/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(item.ArticleAuthor).ToLower()">
+                                                                <i class="fa fa-pencil">
+                                                                </i>@item.ArticleAuthor
+                                                            </a>
+                                                        </li>
+                                                        <li><a><i class="fa fa-eye"></i> @item.ArticleReading</a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
+                                            <div class="single-post-right">
+                                                <a href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()" class="post-category"><h3>@item.ArticleCatagory</h3></a>
+                                                <a href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()/@item.ArticLinkUrl"><h4>@item.ArticleTitle</h4></a>
+
+                                                @if (item.ArticleContent.ToString().Length > 250)
+                                                {
+                                                    <p>@Html.Raw(item.ArticleContent.Substring(0, 250)) ...<a style="color:#49b293" href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()/@item.ArticLinkUrl">Devamını Oku</a></p>
+                                                }
+                                                else
+                                                {
+                                                    <p>@Html.Raw(item.ArticleContent) ...<a style="color:#49b293" href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()/@item.ArticLinkUrl">Devamını Oku</a></p>
+                                                }
+                                                <a href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()/@item.ArticLinkUrl" class="post-top-btn m-0">Devamını Oku</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                    @if (ViewBag.Result == "VeriYok")
+                    {
+                        <div align="center">
+                            <a  style="cursor:pointer" class="post-top-btn m-0 active">Bu arama sonucuna göre kayıt bulunamadı.</a> 
+                        </div><br />  <br />
+
+
+                        @Html.Action("RelatedSearchPost", "Search")
+
+                    }
+                    else
+                    {
+                        <div align="center">
+                            <a id="loadMore" style="cursor:pointer" class="post-top-btn m-0">Daha Fazla Gör</a>
+                        </div>
+                    }
+
+                </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+
+                @*About Advertisement*@
+                @Html.Action("Advertisement", "Home")
+
+                @*About Instagram*@
+
+                @Html.Action("Gallery", "Home")
+
+                @*About Last News*@
+
+                @Html.Action("TopArticle", "Home")
+
+
+                <div class="sidebar-widget mb-50">
+                    <div class="widget-title text-center">
+                        <h4 class="title important-link mb-30">Önemli Linkler</h4>
+                    </div>
+                    <ul class="important-links">
+                        <li><i class="fa fa-link"></i><a href="http://www.saltur.com.tr/" target="_blank">Seyahat için Link</a></li>
+                        <li><i class="fa fa-link"></i><a href="http://www.otelmarket.com.tr/" target="_blank">Otel için Link</a></li>
+                        <li><i class="fa fa-link"></i><a href="http://www.biletmarket.com/" target="_blank">Bilet için Link</a></li>
+                        <li><i class="fa fa-link"></i><a href="http://www.salturmice.com/" target="_blank">Kongre & Toplantı için Link</a></li>
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+

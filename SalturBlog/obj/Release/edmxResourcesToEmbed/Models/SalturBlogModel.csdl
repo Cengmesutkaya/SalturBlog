@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="SalturBlog2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Author">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorAbout" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorFacebook" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorTwitter" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorInstagram" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="AuthorEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserRol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Gallery">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ImageUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityContainer Name="SalturBlog2017Entities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Author" EntityType="Self.Author" />
+    <EntitySet Name="Gallery" EntityType="Self.Gallery" />
+    <EntitySet Name="Article" EntityType="SalturBlog2017Model.Article" />
+  </EntityContainer>
+  <EntityType Name="Article">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleTags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleCatagory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleStatus" Type="Boolean" />
+    <Property Name="ArticleReading" Type="Int32" />
+    <Property Name="ArticleTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+    <Property Name="ArticleUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <Property Name="HomeImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

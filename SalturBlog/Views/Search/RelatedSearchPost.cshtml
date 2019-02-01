@@ -1,0 +1,33 @@
+﻿<link href="@Url.Content("~/Content/css/shortcode/searchstyle.css")" rel="stylesheet" />
+<div class="feature-another-post">
+    <div class="row">
+        <div class="col-xs-12 text-center">
+            <h5 class="leads">Bu makalelere göz atmak ister misiniz?</h5>
+        </div>
+    </div>
+
+    <div class="row">
+        @foreach (var item in ViewBag.RelatedPost)
+        {
+            <div class="col-sm-4">
+                <div class="single-post">
+                    <div class="single-post-img">
+                        <img src="@item.HomeArticleImageUrl" alt="@item.ArticleTitle" />
+                    </div>
+                    <div class="single-post-text">
+                        <a href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()/@item.ArticLinkUrl"><h3>@item.ArticleTitle</h3></a>
+
+                        <ul class="active">
+                            <li><a><i class="fa fa-clock-o"></i>@item.ArticleDate</a></li>
+                            <li>
+                                <a href="/yazarlar/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(item.ArticleAuthor).ToLower()"><i class="fa fa-pencil"></i>@item.ArticleAuthor</a>
+                            </li>
+                            <li><a><i class="fa fa-eye"></i>@item.ArticleReading</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        }
+        <br />
+    </div>
+</div>

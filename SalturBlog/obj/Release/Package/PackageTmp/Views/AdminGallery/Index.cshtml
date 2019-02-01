@@ -1,0 +1,108 @@
+﻿@model IEnumerable<SalturBlog.Models.Gallery>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<style>
+    .modal-header {
+        background-color: #d9534f;
+        color: white !important;
+        text-align: center;
+        font-size: 30px;
+    }
+
+    .close {
+        background-color: #fff;
+        color: white !important;
+    }
+
+    .modal-footer {
+        background-color: #f9f9f9;
+    }
+</style>
+
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    @if (Session["AdminRole"].ToString() == Constants.AdminRole.Admin)
+                    {
+                        <a href="@Url.Action("Create","AdminGallery")" class="btn btn-primary btn-md"><i class="fa fa-plus-circle"></i> Yeni Resim EKle </a>
+                    }*
+                
+                    <ul class="nav navbar-right panel_toolbox">
+                        <li>
+                            <a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                        </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <table class="table table-hover">
+                        <thead>
+                            <tr>
+                                <th>Gallery Resmi</th>
+                          
+                                <th>İşlemler</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            @foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>
+                                        <img src="@item.ImageUrl" height="82" width="82" alt="Galeri Resimleri" />
+
+                                    </td>
+
+                                    <td>
+                                            @if (Session["AdminRole"].ToString() == Constants.AdminRole.Admin)
+                                            {
+                                                @*<a href="@Url.Action("Edit", "AdminGallery", new { id = @item.Id })" class="btn btn-primary btn-sm"><i class="fa fa-pencil"></i> Düzenle </a>*@
+                                                <a data-target="#deleteAdmin" onclick="JavaCodeGonder(@item.Id)" class="btn btn-danger btn-sm"><i class="fa fa-trash-o"></i> Sil </a>
+                                            }
+                                  
+
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Modal -->
+<div class="modal fade" id="deleteAdmin" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" style="height:40%;width:40%">
+        <div class="modal-content">
+            <div class="modal-header modal-header-success">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                <h3><i class="glyphicon glyphicon-alert"></i> Kayıt Silme Onayı</h3>
+            </div>
+            <div class="modal-body">
+                <h4><strong>Dikkat!</strong> Kayıt silinicektir, kaydı silmek istediğinize emin misiniz?</h4>
+            </div>
+            <div class="modal-footer">
+                <a class="btn btn-danger pull-right" id="modalHref"><i class="fa fa-trash-o"></i> Sil</a>
+                <button type="button" class="btn btn-primary pull-right" data-dismiss="modal"><i class="fa fa-power-off"></i> Kapat</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<script type="text/javascript">
+    function JavaCodeGonder(id) {
+        var link = "/AdminGallery/Delete/" + id;
+        $("#modalHref").attr("href", link);
+        $("#deleteAdmin").modal()
+    }
+</script>

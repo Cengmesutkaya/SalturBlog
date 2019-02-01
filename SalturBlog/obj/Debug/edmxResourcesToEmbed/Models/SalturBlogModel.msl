@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="SalturBlog2017ModelStoreContainer" CdmEntityContainer="SalturBlog2017Entities">
+    <EntitySetMapping Name="Author">
+      <EntityTypeMapping TypeName="SalturBlog2017Model.Author">
+        <MappingFragment StoreEntitySet="Author">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+          <ScalarProperty Name="AuthorAbout" ColumnName="AuthorAbout" />
+          <ScalarProperty Name="AuthorImageUrl" ColumnName="AuthorImageUrl" />
+          <ScalarProperty Name="AuthorFacebook" ColumnName="AuthorFacebook" />
+          <ScalarProperty Name="AuthorTwitter" ColumnName="AuthorTwitter" />
+          <ScalarProperty Name="AuthorInstagram" ColumnName="AuthorInstagram" />
+          <ScalarProperty Name="AuthorPassword" ColumnName="AuthorPassword" />
+          <ScalarProperty Name="AuthorEmail" ColumnName="AuthorEmail" />
+          <ScalarProperty Name="UserRol" ColumnName="UserRol" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Gallery">
+      <EntityTypeMapping TypeName="SalturBlog2017Model.Gallery">
+        <MappingFragment StoreEntitySet="Gallery">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Article">
+      <EntityTypeMapping TypeName="SalturBlog2017Model.Article">
+        <MappingFragment StoreEntitySet="Article">
+          <ScalarProperty Name="HomeImageUrl" ColumnName="HomeImageUrl" />
+          <ScalarProperty Name="ArticleUrl" ColumnName="ArticleUrl" />
+          <ScalarProperty Name="ArticleTitle" ColumnName="ArticleTitle" />
+          <ScalarProperty Name="ArticleReading" ColumnName="ArticleReading" />
+          <ScalarProperty Name="ArticleStatus" ColumnName="ArticleStatus" />
+          <ScalarProperty Name="ArticleAuthor" ColumnName="ArticleAuthor" />
+          <ScalarProperty Name="ArticleCatagory" ColumnName="ArticleCatagory" />
+          <ScalarProperty Name="ArticleTags" ColumnName="ArticleTags" />
+          <ScalarProperty Name="ArticleDate" ColumnName="ArticleDate" />
+          <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

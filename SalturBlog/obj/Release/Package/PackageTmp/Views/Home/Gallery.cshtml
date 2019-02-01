@@ -1,0 +1,12 @@
+﻿@model IEnumerable<SalturBlog.Models.Gallery>
+<div class="sidebar-widget mb-50">
+    <div class="widget-title text-center">
+        <h4 class="title mb-30">@@Instagram</h4>
+    </div>
+    <div class="instagram-img">
+        @foreach (var item in Model)
+        {
+            <a href="https://www.instagram.com/saltur/" target="_blank"><img src="@item.ImageUrl" alt="Saltur Blog Galeri" /></a>
+        }
+    </div>
+</div>

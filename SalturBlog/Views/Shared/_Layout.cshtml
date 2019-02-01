@@ -1,0 +1,242 @@
+﻿
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+ 
+    <title>@(Html.Raw(ViewBag.Title))</title>
+    <meta name="keywords" content="@(Html.Raw(ViewBag.Keywords))" />
+    <meta name="description" content="@(Html.Raw(ViewBag.Description))">
+    <meta name="author" content="salajans">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="@Url.Content("~/Content/img/favicon.png")" />
+    <!-- Place favicon.ico in the root directory -->
+    <!-- all css here -->
+    <!-- bootstrap.min.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/bootstrap.min.css")">
+    <!-- font-awesome.min.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/font-awesome.min.css")">
+    <!-- owl.carousel.min.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/owl.carousel.css")">
+    <!-- animate.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/animate.css")">
+    <!-- meanmenu.min.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/meanmenu.min.css")">
+    <!-- shortcodes.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/shortcode/shortcodes.css")">
+    <!-- style.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/style.css")">
+    <!-- responsive.css -->
+    <link rel="stylesheet" href="@Url.Content("~/Content/css/responsive.css")">
+    <!-- modernizr-js -->
+    <script src="@Url.Content("~/Scripts/js/vendor/modernizr-2.8.3.min.js")"></script>
+</head>
+<body>
+
+    <div id="preloader"></div>
+    <header>
+        <div class="header-area white-bg" id="main_h">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-3 col-md-3 col-sm-8">
+                        <div class="logo">
+                            <a href="@Url.Action("","")"><img src="@Url.Content("~/Content/img/logo.png")" alt="Saltur Blog Logo" /></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-7 hidden-sm hidden-xs col-md-7">
+                        <div class="mainmenu">
+                            <nav>
+                                <ul>
+                                    @if (ViewBag.Url == "/")
+                                    {
+                                        <li class="active">
+                                            <a href="@Url.Action("","")">ANASAYFA</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="@Url.Action("","")">ANASAYFA</a>
+                                        </li>
+                                    }
+
+                                    @if (ViewBag.Url == SalturBlog.Utils.UrlDuzenleme.UrlCevir(Constants.Catagory.Seyahat).ToLower())
+                                    {
+                                        <li class="active">
+                                            <a href="/seyahat">SEYAHAT</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="/seyahat">SEYAHAT</a>
+                                        </li>
+                                    }
+                                    @if (ViewBag.Url == SalturBlog.Utils.UrlDuzenleme.UrlCevir(Constants.Catagory.Alisveris).ToLower())
+                                    {
+                                        <li class="active">
+                                            <a href="/alisveris">ALIŞVERİŞ</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="/alisveris">ALIŞVERİŞ</a>
+                                        </li>
+                                    }
+                                    @if (ViewBag.Url == SalturBlog.Utils.UrlDuzenleme.UrlCevir(Constants.Catagory.Eglence).ToLower())
+                                    {
+                                        <li class="active">
+                                            <a href="/eglence">EĞLENCE</a>
+                                        </li>
+                                    }
+                                    else
+                                    {
+                                        <li>
+                                            <a href="/eglence">EĞLENCE</a>
+                                        </li>
+                                    }
+
+                                    @Html.Action("Authors", "Home")
+                            
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-4">
+                        <div class="header-search">
+                            @using (Html.BeginForm("Index", "Search", FormMethod.Post))
+                            {
+                                    <input type="text" placeholder="Site içinde ara ..." name="searchText" />
+                                    <button type="submit" class="header-btn"><i class="fa fa-search"></i></button>
+
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile-menu-area-start -->
+            <div class="mobile-menu-area visible-xs visible-sm">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="mobile-menu">
+                                <nav id="mobile-menu">
+                                    <ul>
+
+                                        <li class="active">
+                                            <a href="@Url.Action("","")">ANASAYFA</a>
+                                        </li>
+
+                                        <li>
+                                            <a href="/seyahat">SEYAHAT</a>
+                                        </li>
+                                        <li>
+                                            <a href="/alisveris">ALIŞVERİŞ</a>
+                                        </li>
+                                        <li>
+                                            <a href="/eglence">EĞLENCE</a>
+                                        </li>
+                                        <li>
+                                            @*<a>YAZARLARIMIZ <i class="fa fa-caret-down"></i></a>*@
+                                            @Html.Action("Authors", "Home")
+
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- mobile-menu-area-end -->
+        </div>
+    </header>
+    <div>
+        @RenderBody()
+    </div>
+
+    <div class="brand-area ptb-50">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12">
+                    <div class="social-feed" align="center">
+                        <ul>
+                            <li><a href="https://www.facebook.com/saltur" target="_blank"><i class="fa fa-facebook"></i>FACEBOOK</a></li>
+                            <li><a href="https://twitter.com/saltur" target="_blank"><i class="fa fa-twitter"></i>TWITTER</a></li>
+                            <li><a href="https://www.instagram.com/saltur/" target="_blank"><i class="fa fa-instagram"></i>INSTAGRAM</a></li>
+                            <li><a href="#"><i class="fa fa-pinterest-p" target="_blank"></i>PINTEREST</a></li>
+                            @*<li><a href="#"><i class="fa fa-heart-o" target="_blank"></i>BLOGLOVEIN</a></li>*@
+                            <li><a href="https://plus.google.com/+saltur" target="_blank"><i class="fa fa-google-plus"></i>GOOGLE+</a></li>
+                            <li><a href="https://www.youtube.com/saltur" target="_blank"><i class="fa fa-youtube"></i>YOUTUBE</a></li>
+                            @*<li><a href="#"><i class="fa fa-rss"></i>RSS</a></li>*@
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="copyright-area ptb-30 black-bg">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 col-sm-7 col-xs-12">
+                    <div class="copyright-left">
+                        <a style="color:white !important;font-family:Crimson Text" href="http://www.saltur.com.tr/hakkimizda" target="_blank">Saltur Blog Hakkında</a>
+                        <span style="color:white !important;font-family:Crimson Text">|</span>
+                        <a style="color:white !important;font-family:Crimson Text" href="http://www.saltur.com.tr/iletisim" target="_blank">İletişim</a>
+                        <span style="color:white !important;font-family:Crimson Text">|</span>
+                        <a style="color:white !important;font-family:Crimson Text" href="http://www.saltur.com.tr/kullanici-sozlesmesi" target="_blank">Kullanım Sözleşmesi</a>
+                        <span style="color:white !important;font-family:Crimson Text">|</span>
+                        <a style="color:white !important;font-family:Crimson Text" href="http://www.saltur.com.tr/hakkimizda" target="_blank">Saltur Blog Hakkında</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-6 col-sm-5 col-xs-12">
+                    <div class="copyright-right">
+                        <p>© Copyright 2017 Saltur - Saltur Blog. Tüm hakları saklıdır.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- copyright-area-end -->
+    <!-- footer-end -->
+    <!-- main-js -->
+    <script src="@Url.Content("~/Scripts/js/vendor/jquery-1.12.0.min.js")"></script>
+    <!-- bootstrap.min.js -->
+    <script src="@Url.Content("~/Scripts/js/bootstrap.min.js")"></script>
+    <!-- owl.carousel.min.js -->
+    <script src="@Url.Content("~/Scripts/js/owl.carousel.min.js")"></script>
+    <!-- jquery.scrollUp.js -->
+    <script src="@Url.Content("~/Scripts/js/jquery.scrollUp.js")"></script>
+    <!-- jquery.waypoints.min.js -->
+    <script src="@Url.Content("~/Scripts/js/jquery.waypoints.min.js")"></script>
+    <!-- jquery.meanmenu.js -->
+    <script src="@Url.Content("~/Scripts/js/jquery.meanmenu.js")"></script>
+    <!-- jquery.sticky.js -->
+    <script src="@Url.Content("~/Scripts/js/jquery.sticky.js")"></script>
+    <!-- plugins.js -->
+    <script src="@Url.Content("~/Scripts/js/plugins.js")"></script>
+    <!-- main.js -->
+    <script src="@Url.Content("~/Scripts/js/main.js")"></script>
+
+    <script>
+    $(document).ready(function () {
+        cards = $('.allCatagory');
+        $.each(cards, function (key, value) {
+            $(this)
+              .find('.article')
+              .slice(9)
+              .hide();
+        });
+    });
+
+    $('#loadMore').click(function () {
+        $(".allCatagory .article").show();
+        $("#loadMore").hide();
+    });
+    </script>
+    <!-- post-content-area-end -->
+</body>
+</html>

@@ -1,0 +1,77 @@
+﻿@model SalturBlog.Models.Author
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Saltur Blog Sistemi | 2017 </title>
+    <!-- Bootstrap -->
+    <link rel="icon" href="@Url.Content("~/Content/img/favicon.png")" />
+    <link href="@Url.Content("~/Content/admin/vendors/bootstrap/dist/css/bootstrap.min.css")" rel="stylesheet" />
+    <!-- Font Awesome -->
+    <link href="@Url.Content("~/Content/admin/vendors/font-awesome/css/font-awesome.min.css")" rel="stylesheet" />
+    <!-- Custom Theme Style -->
+    <link href="@Url.Content("~/Content/admin/css/custom.css")" rel="stylesheet" />
+    <script src="@Url.Content("~/Content/admin/vendors/jquery/dist/jquery.min.js")"></script>
+    @*<script src="@Url.Content("~/Scripts/adminlogin.js")"></script>*@
+
+</head>
+
+
+<body style="background:#fff">
+
+    <div class="">
+        <div id="wrapper">
+            <div id="login" class="" form">
+                <div align="center">
+                    <br /><br />
+                    <br />
+
+                    @*<h1><i class="fa fa-paw" style="font-size: 26px;"></i> Gentelella Alela!</h1>*@
+                    <img src="@Url.Content("~/Content/img/logo.png")" style="width:100%;" alt="Saltur Blog Logo"/>
+                </div>
+                @using (Html.BeginForm("Index", "Login"))
+                {
+                    @Html.AntiForgeryToken()
+                    <section class="login_content">
+                        @*<h1>Admin Giriş Formu</h1>*@
+                        <div>
+                            @Html.EditorFor(model => model.AuthorEmail, new { htmlAttributes = new { @class = "btn-round form-control", @placeholder = "Email adresiniz", @required = "required", @type = "text", @maxlength = "20" } })
+                        </div><br />
+                        <div>
+                            @Html.EditorFor(model => model.AuthorPassword, new { htmlAttributes = new { @class = "btn-round form-control", @placeholder = "Şifreniz", @required = "required", @type = "password", @maxlength = "20" } })
+                        </div><br />
+                        <div>
+
+                            <button type="submit" class="btn btn-round btn-success" style="width:350px"><i class="fa fa-power-off"></i> Giriş Yap</button>
+
+                            @if (ViewBag.Visibility != null)
+                            {
+                                <div id="targetHata" style="text-align:center;visibility:@ViewBag.Visibility"><p class='btn-round alert alert-danger text-white'>Kullanıcı adı veya şifre hatalı</p></div>
+                            }
+                            else
+                            {
+                                <div id="targetHata" style="text-align:center;@ViewBag.Visibility"><p class='btn-round alert alert-danger text-white'>Kullanıcı adı veya şifre hatalı</p></div>
+                            }
+
+                            <div>
+                                <p style="text-align:center">© 2017 <a href="http://www.saltur.com.tr/" target="_blank">saltur.com.tr</a> Tüm hakları saklıdır.</p>
+                            </div>
+                        </div>
+                    </section>
+                }
+
+            </div>
+
+        </div>
+    </div>
+</body>
+</html>
+<style>
+    .form-control {
+        text-transform: lowercase;
+    }
+</style>

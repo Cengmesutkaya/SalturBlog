@@ -1,0 +1,168 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="SalturBlog2017Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ArticleContent" Type="nvarchar(max)" />
+          <Property Name="ArticleDate" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArticleTags" Type="nvarchar(max)" />
+          <Property Name="ArticleCatagory" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArticleAuthor" Type="nvarchar" MaxLength="50" />
+          <Property Name="ArticleStatus" Type="bit" />
+          <Property Name="ArticleReading" Type="int" />
+          <Property Name="ArticleTitle" Type="nvarchar" MaxLength="250" />
+          <Property Name="ArticleUrl" Type="nvarchar" MaxLength="150" />
+          <Property Name="HomeImageUrl" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AuthorName" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorAbout" Type="nvarchar(max)" />
+          <Property Name="AuthorImageUrl" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorFacebook" Type="nvarchar" MaxLength="150" />
+          <Property Name="AuthorTwitter" Type="nvarchar" MaxLength="150" />
+          <Property Name="AuthorInstagram" Type="nvarchar" MaxLength="150" />
+          <Property Name="AuthorPassword" Type="nvarchar" MaxLength="50" />
+          <Property Name="AuthorEmail" Type="nvarchar" MaxLength="50" />
+          <Property Name="UserRol" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ImageUrl" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityContainer Name="SalturBlog2017ModelStoreContainer">
+          <EntitySet Name="Article" EntityType="Self.Article" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Author" EntityType="Self.Author" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="SalturBlog2017Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Author">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuthorName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorAbout" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorImageUrl" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorFacebook" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorTwitter" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorInstagram" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorPassword" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="AuthorEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="UserRol" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Gallery">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ImageUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityContainer Name="SalturBlog2017Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Author" EntityType="Self.Author" />
+          <EntitySet Name="Gallery" EntityType="Self.Gallery" />
+          <EntitySet Name="Article" EntityType="SalturBlog2017Model.Article" />
+        </EntityContainer>
+        <EntityType Name="Article">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ArticleContent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleTags" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleCatagory" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleAuthor" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleStatus" Type="Boolean" />
+          <Property Name="ArticleReading" Type="Int32" />
+          <Property Name="ArticleTitle" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="ArticleUrl" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <Property Name="HomeImageUrl" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="SalturBlog2017ModelStoreContainer" CdmEntityContainer="SalturBlog2017Entities">
+          <EntitySetMapping Name="Author">
+            <EntityTypeMapping TypeName="SalturBlog2017Model.Author">
+              <MappingFragment StoreEntitySet="Author">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="AuthorName" ColumnName="AuthorName" />
+                <ScalarProperty Name="AuthorAbout" ColumnName="AuthorAbout" />
+                <ScalarProperty Name="AuthorImageUrl" ColumnName="AuthorImageUrl" />
+                <ScalarProperty Name="AuthorFacebook" ColumnName="AuthorFacebook" />
+                <ScalarProperty Name="AuthorTwitter" ColumnName="AuthorTwitter" />
+                <ScalarProperty Name="AuthorInstagram" ColumnName="AuthorInstagram" />
+                <ScalarProperty Name="AuthorPassword" ColumnName="AuthorPassword" />
+                <ScalarProperty Name="AuthorEmail" ColumnName="AuthorEmail" />
+                <ScalarProperty Name="UserRol" ColumnName="UserRol" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Gallery">
+            <EntityTypeMapping TypeName="SalturBlog2017Model.Gallery">
+              <MappingFragment StoreEntitySet="Gallery">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ImageUrl" ColumnName="ImageUrl" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Article">
+            <EntityTypeMapping TypeName="SalturBlog2017Model.Article">
+              <MappingFragment StoreEntitySet="Article">
+                <ScalarProperty Name="HomeImageUrl" ColumnName="HomeImageUrl" />
+                <ScalarProperty Name="ArticleUrl" ColumnName="ArticleUrl" />
+                <ScalarProperty Name="ArticleTitle" ColumnName="ArticleTitle" />
+                <ScalarProperty Name="ArticleReading" ColumnName="ArticleReading" />
+                <ScalarProperty Name="ArticleStatus" ColumnName="ArticleStatus" />
+                <ScalarProperty Name="ArticleAuthor" ColumnName="ArticleAuthor" />
+                <ScalarProperty Name="ArticleCatagory" ColumnName="ArticleCatagory" />
+                <ScalarProperty Name="ArticleTags" ColumnName="ArticleTags" />
+                <ScalarProperty Name="ArticleDate" ColumnName="ArticleDate" />
+                <ScalarProperty Name="ArticleContent" ColumnName="ArticleContent" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,178 @@
+﻿@model SalturBlog.Models.ArticleModel
+
+@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<meta property="fb:admins" content="502795246757368" />
+<div id="fb-root"></div>
+<script>
+(function(d, s, id) {
+
+  var js, fjs = d.getElementsByTagName(s)[0];
+
+  if (d.getElementById(id)) return;
+
+  js = d.createElement(s); js.id = id;
+
+  js.src = "//connect.facebook.net/tr_TR/sdk.js#xfbml=1&version=v2.8";
+
+  fjs.parentNode.insertBefore(js, fjs);
+
+}(document, 'script', 'facebook-jssdk'));</script>
+
+<div class="post-content-area ptb-80 standard-post" id="detaycont">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-9 col-md-9 col-sm-12 col-xs-12">
+                <div class="section-title text-center">
+                    <h4 class="text-uppercase">@Model.ArticleCatagory</h4>
+                    <h3 id="ArticleTitle">@Model.ArticleTitle</h3>
+                    <span>@Model.ArticleDate</span>  @*<i style="margin-left:10px;" class="fa fa-eye">@Model.ArticleReading</i>*@
+                </div>
+                <div class="post-top">  
+                    <div class="post-top-info">
+                        <p>@Html.Raw(Model.ArticleContent)</p>
+                    
+                    </div>
+               
+                    <div class="feature-post-btn mtb-40">
+                        <ul>
+                            @foreach (var item in Model.Tags)
+                            {
+                                <li><a>@item</a></li>
+                            }
+                       
+                        </ul>
+                    </div>
+                    <div class="post-top-footer">
+                        @*<span>8 yorum</span>*@
+                        <div class="post-top-social floatright">
+                            <span>Paylaş:</span>
+                            <a style="cursor:pointer" onclick="window.open('http://www.facebook.com/share.php?u=@ViewBag.Url')">
+                                <i class="fa fa-facebook"></i>
+                            </a>
+                            <a style="cursor:pointer" onclick="window.open('http://twitter.com/share?url=@ViewBag.Url')">
+                                <i class="fa fa-twitter"></i>
+                            </a>
+                            <a style="cursor:pointer" onclick="window.open('https://plus.google.com/share?url=@ViewBag.Url')">
+                            <i class="fa fa-google-plus">
+                                </i></a>
+                        </div>
+                    </div>
+                </div>
+                <div class="feature-author fix mtb-50">
+                    <div class="author-img-2">
+                        <img src="@Model.AuthorImageUrl" alt="@Model.ArticleAuthor"/>
+                    </div>
+                    <div class="author-text">
+                        <div class="author-title">
+                            <h3>@Model.AuthorName</h3>
+                        </div>
+                        <p>@Model.AuthorAbout </p>
+                        <div class="author-icon">
+                            <a href="@Model.AuthorTwitter"  target="_blank"><i class="fa fa-linkedin"></i></a>
+                            <a href="@Model.AuthorFacebook"  target="_blank"><i class="fa fa-facebook"></i></a>
+                            <a href="@Model.AuthorInstagram"  target="_blank"><i class="fa fa-instagram"></i></a>
+                        </div>
+                    </div>
+                </div>
+                @*Related Post*@
+
+                <div class="feature-another-post">
+                    <div class="row">
+                        <div class="col-xs-12 text-center">
+                            <h5 class="leads">Bunları da okumak ister misiniz?</h5>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        @foreach (var item in ViewBag.RelatedPost)
+                        {
+                            <div class="col-sm-4">
+                                <div class="single-post">
+                                    <div class="single-post-img">
+                                        <img src="@item.HomeArticleImageUrl" alt="@item.ArticleTitle" />
+                                    </div>
+                                    <div class="single-post-text">
+                                        <a href="/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(@item.ArticleCatagory).ToLower()/@item.ArticLinkUrl"><h3>@item.ArticleTitle</h3></a>
+
+                                        <ul>
+                                            <li><a><i class="fa fa-clock-o"></i>@item.ArticleDate</a></li>
+                                            <li>
+                                            <a href="/yazarlar/@SalturBlog.Utils.UrlDuzenleme.UrlCevir(item.ArticleAuthor).ToLower()"><i class="fa fa-pencil"></i>@item.ArticleAuthor</a>
+                                            </li>
+                                            <li><a><i class="fa fa-eye"></i>@item.ArticleReading</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                        <br />
+                    </div>
+
+                       @*facebook yorum yapma*@
+                    <div class="comments-area mt-40">
+                        <div class="feature-another-post-comment text-center">
+                            <span>Yorumlar</span>
+                        </div>
+                        <div class="comments-list mt-30">
+                            <div class="fb-comments" data-href="@ViewBag.Url" data-numposts="10"></div>
+                          
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+                <div class="sidebar-area-lifestyle">
+                    @*About Author*@
+                    @Html.Action("Advertisement", "Home")
+                    @*About Instagram*@
+
+                    @Html.Action("Gallery", "Home")
+
+                    @*About Last News*@
+
+                    @Html.Action("TopArticle", "Home")
+
+
+                    <div class="sidebar-widget mb-50">
+                        <div class="widget-title text-center">
+                            <h4 class="title important-link mb-30">Önemli Linkler</h4>
+                        </div>
+                        <ul class="important-links">
+                            <li><i class="fa fa-link"></i><a href="http://www.saltur.com.tr/" target="_blank">Seyahat için Link</a></li>
+                            <li><i class="fa fa-link"></i><a href="http://www.otelmarket.com.tr/" target="_blank">Otel için Link</a></li>
+                            <li><i class="fa fa-link"></i><a href="http://www.biletmarket.com/" target="_blank">Bilet için Link</a></li>
+                            <li><i class="fa fa-link"></i><a href="http://www.salturmice.com/" target="_blank">Kongre & Toplantı için Link</a></li>
+                        </ul>
+                    </div>
+
+                    @*<div class="sidebar-widget mb-40">
+                        <div class="widget-title text-center">
+                            <h4 class="title mb-30">Tag Alanı</h4>
+                        </div>
+                        <div class="sidebar-tag">
+                            <ul>
+                                <li><a href="http://blog.saltur.com.tr/eglence">EĞLENCE</a></li>
+                                <li><a href="http://blog.saltur.com.tr/seyahat">SEYAHAT</a></li>
+                                <li><a href="http://blog.saltur.com.tr/seyahat/urfa'nin-sakli-cenneti-harran-ovasi">GEZİLER</a></li>
+
+                                <li><a href="http://blog.saltur.com.tr/alisveris">ALIŞVERİŞ</a></li>
+                                <li><a href="http://www.saltur.com.tr/">SALTUR</a></li>
+                                <li><a href="#">TURİZM</a></li>
+
+                                <li><a href="http://www.saltur.com.tr/yurt-ici-turlar/hafta-sonu-turlari">TURİZM</a></li>
+                                <li><a href="@Url.Action("","")">SALTUR BLOG</a></li>
+                                <li><a href="http://www.saltur.com.tr/yurt-ici-turlar/fiyata-gore-sirala">YURT İÇİ TUR</a></li>
+                                <li><a href="http://www.saltur.com.tr/yurt-disi-turlar/fiyata-gore-sirala">YURT DIŞI TUR</a></li>
+                            </ul>
+                        </div>
+                    </div>*@
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+

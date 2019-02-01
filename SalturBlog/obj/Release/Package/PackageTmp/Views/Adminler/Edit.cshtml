@@ -1,0 +1,121 @@
+﻿@model SalturBlog.Models.Author
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.js")"></script>
+<link href="@Url.Content("~/Content/admin/fileinput.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/admin/theme.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/admin/bootstrap.min1.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/fileinput.js")"></script>
+<script src="@Url.Content("~/Scripts/tr.js")"></script>
+<script src="@Url.Content("~/Scripts/theme.js")"></script>
+<script src="@Url.Content("~/Scripts/popper.min.js")"></script>
+<script src="@Url.Content("~/Scripts/theme.js")"></script>
+<script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+<script src="@Url.Content("~/Scripts/moment.js")"></script>
+
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    @using (Html.BeginForm("Edit", "Adminler", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Yazar Düzenleme Sayfası</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="col-md-10">Yazar Resmi Seçiniz: </label><br />
+                                    <div class="file-loading">
+                                        <input type="file" id="ImageFiles"  name="ImageFiles" multiple="multiple" class="form-control" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="col-md-10">Yazar Kısa Açıklama Giriniz: </label><br />
+                                    @*<textarea rows="8" cols="50" class="form-control" name="aboutUser" maxlength="250" required="required"></textarea>*@
+                                    @Html.TextAreaFor(model => model.AuthorAbout, 6, 40, new { @class = "form-control", @maxlength = "500" })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="col-md-10">Yazar Ad-Soyad Giriniz: </label><br />
+                                    @Html.EditorFor(model => model.AuthorName, new { htmlAttributes = new { @class = "form-control", @required = "required", @maxlength = "50" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-10">Yazar Emaili Giriniz: </label><br />
+                                    @Html.EditorFor(model => model.AuthorEmail, new { htmlAttributes = new { @class = "form-control", @required = "required", @id = "email", @maxlength = "30" } })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="col-md-10">Yazar Facebook Linki Giriniz: </label><br />
+                                    @Html.EditorFor(model => model.AuthorFacebook, new { htmlAttributes = new { @class = "form-control", @required = "required", @maxlength = "50" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-10">Yazar İnstagram Linki Giriniz: </label><br />
+                                    @Html.EditorFor(model => model.AuthorInstagram, new { htmlAttributes = new { @class = "form-control", @required = "required", @maxlength = "50" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-6">
+                                    <label class="col-md-10">Yazar Şifresi Giriniz: </label><br />
+                                    @Html.EditorFor(model => model.AuthorPassword, new { htmlAttributes = new { @class = "form-control", @required = "required", @type = "password", @id = "sifre", @maxlength = "20" } })
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="col-md-10">Yazar Rolü: </label><br />
+                                    @Html.DropDownListFor(model => model.UserRol, (SelectList)ViewBag.AdminRol, new { @class = "form-control" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="col-md-10">Yazar Linkedin Linki Giriniz: </label><br />
+                                    @Html.EditorFor(model => model.AuthorTwitter, new { htmlAttributes = new { @class = "form-control", @required = "required", @maxlength = "90" } })
+                                </div>
+                            </div>
+                            <br />
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="submit" value="Değişiklikleri Kaydet" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+
+    #email, #sifre {
+        text-transform: lowercase;
+    }
+</style>
+<script>
+
+    $('#ImageFiles').fileinput({
+        theme: 'fa',
+        language: 'tr',
+        uploadUrl: '#',
+        allowedFileExtensions: ['jpg', 'png', 'JPG'],
+        uploadAsync: true,
+        minFileCount:1,
+        maxFileCount: 1,
+    });
+
+</script><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+

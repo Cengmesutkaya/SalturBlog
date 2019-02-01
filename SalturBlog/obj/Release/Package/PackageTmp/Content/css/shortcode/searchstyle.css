@@ -1,0 +1,41 @@
+    .single-post .single-post-img::before {
+        opacity: .4;
+        transform: scale(1);
+    }
+
+    .single-post .single-post-text {
+        opacity: 1;
+        z-index: 1;
+        transform: scale(1);
+    }
+
+    .single-post-text {
+        bottom: 35px;
+        position: absolute;
+        width: 100%;
+        padding-left: 30px;
+        opacity: 0;
+        transition: all .3s;
+        transform: scale(0);
+    }
+
+        .single-post-text > a h3 {
+            color: #fff;
+            font-family: Crimson Text;
+            font-size: 20px;
+            font-weight: 600;
+        }
+
+        .single-post-text ul li {
+            display: inline-block;
+        }
+
+            .single-post-text ul li a {
+                color: #fff;
+                margin-right: 15px;
+            }
+
+                .single-post-text ul li a i {
+                    color: #fff;
+                    margin-right: 5px;
+                }

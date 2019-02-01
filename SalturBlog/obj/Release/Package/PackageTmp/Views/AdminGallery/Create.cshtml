@@ -1,0 +1,70 @@
+﻿@model SalturBlog.Models.Author
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<script src="@Url.Content("~/Scripts/jquery.js")"></script>
+<link href="@Url.Content("~/Content/admin/fileinput.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/admin/theme.css")" rel="stylesheet" />
+<link href="@Url.Content("~/Content/admin/bootstrap.min1.css")" rel="stylesheet" />
+<script src="@Url.Content("~/Scripts/fileinput.js")"></script>
+<script src="@Url.Content("~/Scripts/tr.js")"></script>
+<script src="@Url.Content("~/Scripts/theme.js")"></script>
+<script src="@Url.Content("~/Scripts/popper.min.js")"></script>
+<script src="@Url.Content("~/Scripts/theme.js")"></script>
+<script src="@Url.Content("~/Scripts/bootstrap.min.js")"></script>
+<script src="@Url.Content("~/Scripts/moment.js")"></script>
+
+<div class="">
+    <div class="clearfix"></div>
+    <div class="row">
+        <div class="clearfix"></div>
+        <div class="col-md-12 col-sm-12 col-xs-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    @using (Html.BeginForm("Create", "AdminGallery", FormMethod.Post, new { enctype = "multipart/form-data" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <div class="form-horizontal">
+                            <h4>Yeni Resim Ekleme Sayfası</h4>
+                            <hr />
+                            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <label class="col-md-10">Galeri Resmi Seçiniz: </label><br />
+                                    <div class="file-loading">
+                                        <input type="file" id="ImageFiles" name="ImageFiles" multiple="multiple" class="form-control" required="required" />
+                                    </div>
+                                </div>
+                            </div>
+                        
+                            <div class="form-group">
+                                <div class="col-md-10">
+                                    <input type="submit" value="Kaydet" class="btn btn-success" />
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+
+    $('#ImageFiles').fileinput({
+        theme: 'fa',
+        language: 'tr',
+        uploadUrl: '#',
+        allowedFileExtensions: ['jpg', 'png', 'JPG'],
+        uploadAsync: true,
+        minFileCount:1,
+        maxFileCount: 9,
+    });
+
+</script>
